@@ -19,14 +19,7 @@ public class AudiService {
 
     public void addAudi(Audi newAudi)
     {
-        Audi temp = new Audi();
-        temp.setId(newAudi.getId());
-        temp.setMovie(newAudi.getMovie());
-        temp.setName(newAudi.getName());
-        temp.setTheater(newAudi.getTheater());
-        temp.setTotalSeats(newAudi.getTotalSeats());
 
-
-        audiRepo.save(temp);
+        audiRepo.save(newAudi);
     }
 }

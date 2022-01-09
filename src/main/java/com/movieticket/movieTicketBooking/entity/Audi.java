@@ -1,5 +1,6 @@
 package com.movieticket.movieTicketBooking.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,14 +18,15 @@ public class Audi {
     public int totalSeats;
     @Column(name = "name")
     public String name;
+
     @ManyToOne
-    @JoinColumn(name = "movieid")
+    @JoinColumn(name = "movieid",referencedColumnName = "id")
     public Movie movie;
+
     @ManyToOne
-    @JoinColumn(name = "theaterid")
+    @JoinColumn(name = "theaterid",referencedColumnName = "id")
     public Theater theater;
 
-    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "audi",cascade = CascadeType.ALL)
     public List<Seat> seats;
 
@@ -82,5 +84,17 @@ public class Audi {
 
     public void setTheater(Theater theater) {
         this.theater = theater;
+    }
+
+    @Override
+    public String toString() {
+        return "Audi{" +
+                "id=" + id +
+                ", totalSeats=" + totalSeats +
+                ", name='" + name + '\'' +
+                ", movie=" + movie +
+                ", theater=" + theater +
+                ", seats=" + seats +
+                '}';
     }
 }

@@ -1,6 +1,9 @@
 package com.movieticket.movieTicketBooking.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "movie")
@@ -14,6 +17,10 @@ public class Movie {
     public String name;
     @Column(name = "director")
     public String director;
+
+
+    @OneToMany(mappedBy = "movie")
+    private List<Audi> listOfAudi;
 
     public Movie()
     {

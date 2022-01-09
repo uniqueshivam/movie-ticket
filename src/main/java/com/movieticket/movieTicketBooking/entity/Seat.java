@@ -13,7 +13,7 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seatid")
     public int id;
-    @JsonBackReference
+
     @ManyToOne
     @JoinColumn(name = "audiid")
     public Audi audi;

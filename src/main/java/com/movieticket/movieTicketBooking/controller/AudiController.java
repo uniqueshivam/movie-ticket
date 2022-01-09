@@ -25,7 +25,7 @@ public class AudiController {
     public void saveAudi(@RequestBody Audi audi)
     {
         System.out.println("*****************************************************");
-        System.out.println(audi.getMovie());
+        System.out.println(audi);
 
         audiService.addAudi(audi);
     }
