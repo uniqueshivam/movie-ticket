@@ -27,6 +27,7 @@ public class Audi {
     @JoinColumn(name = "theaterid",referencedColumnName = "id")
     public Theater theater;
 
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "audi",cascade = CascadeType.ALL)
     public List<Seat> seats;
 

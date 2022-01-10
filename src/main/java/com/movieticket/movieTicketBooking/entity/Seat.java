@@ -2,6 +2,7 @@ package com.movieticket.movieTicketBooking.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -14,6 +15,8 @@ public class Seat {
     @Column(name = "seatid")
     public int id;
 
+
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "audiid")
     public Audi audi;
