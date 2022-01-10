@@ -31,9 +31,8 @@ public class Booking {
     @Column(name = "total_amount")
     private double totalAmount;
 
-//    @JsonBackReference(value = "for-booking-id")
-//    @OneToMany(fetch = FetchType.LAZY,mappedBy = "booking",cascade = CascadeType.ALL)
-//    private List<Seat> listOfSeats;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "booking",cascade = CascadeType.ALL)
+    private List<Seat> listOfSeats;
 
     public Booking()
     {
@@ -46,7 +45,7 @@ public class Booking {
         this.movie = movie;
         this.bookingTime = bookingTime;
         this.totalAmount = totalAmount;
-//        this.listOfSeats = listOfSeats;
+        this.listOfSeats = listOfSeats;
     }
 
     public int getBooking_id() {
@@ -89,11 +88,11 @@ public class Booking {
         this.totalAmount = totalAmount;
     }
 
-//    public List<Seat> getListOfSeats() {
-//        return listOfSeats;
-//    }
+    public List<Seat> getListOfSeats() {
+        return listOfSeats;
+    }
 
-//    public void setListOfSeats(List<Seat> listOfSeats) {
-//        this.listOfSeats = listOfSeats;
-//    }
+    public void setListOfSeats(List<Seat> listOfSeats) {
+        this.listOfSeats = listOfSeats;
+    }
 }

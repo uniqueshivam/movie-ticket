@@ -28,11 +28,8 @@ public class Audi {
     public Theater theater;
 
 
-//    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "audi",cascade = CascadeType.ALL)
     public List<Seat> seats;
-
-
 
 
     public Audi()

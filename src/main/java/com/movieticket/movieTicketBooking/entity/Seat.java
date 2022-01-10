@@ -15,7 +15,6 @@ public class Seat {
     @Column(name = "seatid")
     public int id;
 
-//    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "audiid")
     public Audi audi;
@@ -26,10 +25,10 @@ public class Seat {
     @Column(name = "price")
     public int price;
 
-//    @JsonManagedReference(value = "for-booking-id")
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name ="booking_id")
-//    public Booking booking;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name ="booking_id")
+    public Booking booking;
 
 
     public Seat()
@@ -42,7 +41,7 @@ public class Seat {
         this.audi = audi;
         this.isbooked = isbooked;
         this.price = price;
-//        this.booking = booking;
+        this.booking = booking;
     }
 
     public int getId() {
@@ -77,13 +76,13 @@ public class Seat {
         this.price = price;
     }
 
-//    public Booking getBooking() {
-//        return booking;
-//    }
-//
-//    public void setBooking(Booking booking) {
-//        this.booking = booking;
-//    }
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 
 
 }

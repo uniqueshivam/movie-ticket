@@ -1,5 +1,7 @@
 package com.movieticket.movieTicketBooking.controller;
 
+import com.movieticket.movieTicketBooking.converter.BookingConverter;
+import com.movieticket.movieTicketBooking.dto.BookingDto;
 import com.movieticket.movieTicketBooking.entity.Booking;
 import com.movieticket.movieTicketBooking.service.Bookingservice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class BookingController {
 
     @Autowired
     private Bookingservice bookingservice;
+    @Autowired
+    private BookingConverter bookingConverter;
 
     @PostMapping("/addNew")
     public void addNewBooking(@RequestBody Booking booking)
@@ -21,9 +25,10 @@ public class BookingController {
     }
 
     @GetMapping("/getAll")
-    public List<Booking> getAllBooking()
+    public List<BookingDto> getAllBooking()
     {
-        return bookingservice.getAllBooking();
+
+        return bookingConverter.listOfBookingEntityToListDto(bookingservice.getAllBooking());
     }
 
 }
