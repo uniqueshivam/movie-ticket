@@ -29,8 +29,69 @@ public class Booking {
     private double totalAmount;
 
 //    @JoinTable(name = "seat-booked",joinColumns = @JoinColumn(name="seat_id",referencedColumnName = "seatid"),inverseJoinColumns = @JoinColumn(name="booking_id",referencedColumnName = "booking_id"))
-//    @OneToMany
-//    @JoinColumn(name = "seatid")
-//    private List<Seat> listOfSeats;
+    @OneToMany
+    @JoinColumn(name = "seatid")
+    private List<Seat> listOfSeats;
 
+    public Booking()
+    {
+
+    }
+
+    public Booking(int booking_id, Audi audi, Movie movie, Date bookingTime, double totalAmount, List<Seat> listOfSeats) {
+        this.booking_id = booking_id;
+        this.audi = audi;
+        this.movie = movie;
+        this.bookingTime = bookingTime;
+        this.totalAmount = totalAmount;
+        this.listOfSeats = listOfSeats;
+    }
+
+    public int getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(int booking_id) {
+        this.booking_id = booking_id;
+    }
+
+    public Audi getAudi() {
+        return audi;
+    }
+
+    public void setAudi(Audi audi) {
+        this.audi = audi;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Date getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBookingTime(Date bookingTime) {
+        this.bookingTime = bookingTime;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public List<Seat> getListOfSeats() {
+        return listOfSeats;
+    }
+
+    public void setListOfSeats(List<Seat> listOfSeats) {
+        this.listOfSeats = listOfSeats;
+    }
 }

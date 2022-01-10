@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,6 +25,8 @@ public class Bookingservice {
 
     public List<Booking> getAllBooking()
     {
+        System.out.println("*****************************************************");
+        System.out.println(bookingRepo.findAll().get(0));
         return bookingRepo.findAll();
     }
 }
