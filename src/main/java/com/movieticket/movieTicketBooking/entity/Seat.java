@@ -21,7 +21,7 @@ public class Seat {
     @JoinColumn(name = "audiid")
     public Audi audi;
     @Column(name = "isbooked")
-    public boolean isbooked;
+    public int isbooked;
     @Column(name = "price")
     public int price;
 
@@ -31,7 +31,7 @@ public class Seat {
 
     }
 
-    public Seat(int id, Audi audi, boolean isbooked, int price) {
+    public Seat(int id, Audi audi, int isbooked, int price) {
         this.id = id;
         this.audi = audi;
         this.isbooked = isbooked;
@@ -54,11 +54,11 @@ public class Seat {
         this.audi = audi;
     }
 
-    public boolean isIsbooked() {
+    public int isIsbooked() {
         return isbooked;
     }
 
-    public void setIsbooked(boolean isbooked) {
+    public void setIsbooked(int isbooked) {
         this.isbooked = isbooked;
     }
 

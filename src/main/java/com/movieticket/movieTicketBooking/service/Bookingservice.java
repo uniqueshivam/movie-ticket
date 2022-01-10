@@ -25,8 +25,7 @@ public class Bookingservice {
 
     public List<Booking> getAllBooking()
     {
-        System.out.println("*****************************************************");
-        System.out.println(bookingRepo.findAll().get(0));
+
         return bookingRepo.findAll();
     }
 }
