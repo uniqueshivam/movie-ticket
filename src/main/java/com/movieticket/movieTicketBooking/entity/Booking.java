@@ -1,5 +1,8 @@
 package com.movieticket.movieTicketBooking.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +31,9 @@ public class Booking {
     @Column(name = "total_amount")
     private double totalAmount;
 
-//    @JoinTable(name = "seat-booked",joinColumns = @JoinColumn(name="seat_id",referencedColumnName = "seatid"),inverseJoinColumns = @JoinColumn(name="booking_id",referencedColumnName = "booking_id"))
-    @OneToMany
-    @JoinColumn(name = "seatid")
-    private List<Seat> listOfSeats;
+//    @JsonBackReference(value = "for-booking-id")
+//    @OneToMany(fetch = FetchType.LAZY,mappedBy = "booking",cascade = CascadeType.ALL)
+//    private List<Seat> listOfSeats;
 
     public Booking()
     {
@@ -44,7 +46,7 @@ public class Booking {
         this.movie = movie;
         this.bookingTime = bookingTime;
         this.totalAmount = totalAmount;
-        this.listOfSeats = listOfSeats;
+//        this.listOfSeats = listOfSeats;
     }
 
     public int getBooking_id() {
@@ -87,11 +89,11 @@ public class Booking {
         this.totalAmount = totalAmount;
     }
 
-    public List<Seat> getListOfSeats() {
-        return listOfSeats;
-    }
+//    public List<Seat> getListOfSeats() {
+//        return listOfSeats;
+//    }
 
-    public void setListOfSeats(List<Seat> listOfSeats) {
-        this.listOfSeats = listOfSeats;
-    }
+//    public void setListOfSeats(List<Seat> listOfSeats) {
+//        this.listOfSeats = listOfSeats;
+//    }
 }
