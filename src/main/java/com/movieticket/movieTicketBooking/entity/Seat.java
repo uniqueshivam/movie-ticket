@@ -26,7 +26,7 @@ public class Seat {
     public int price;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name ="booking_id")
     public Booking booking;
 

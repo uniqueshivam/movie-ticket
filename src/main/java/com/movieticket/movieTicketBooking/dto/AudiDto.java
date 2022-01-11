@@ -7,7 +7,22 @@ public class AudiDto {
     private String name;
     private String movieName;
     private String theaterName;
+    private String city;
 
+
+    public AudiDto()
+    {
+
+    }
+
+    public AudiDto(int id, int totalSeats, String name, String movieName, String theaterName, String city) {
+        this.id = id;
+        this.totalSeats = totalSeats;
+        this.name = name;
+        this.movieName = movieName;
+        this.theaterName = theaterName;
+        this.city = city;
+    }
 
     public int getId() {
         return id;
@@ -47,5 +62,13 @@ public class AudiDto {
 
     public void setTheaterName(String theaterName) {
         this.theaterName = theaterName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

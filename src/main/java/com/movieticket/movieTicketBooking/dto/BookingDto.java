@@ -1,6 +1,7 @@
 package com.movieticket.movieTicketBooking.dto;
 
 import com.movieticket.movieTicketBooking.entity.user;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.Date;
 import java.util.List;

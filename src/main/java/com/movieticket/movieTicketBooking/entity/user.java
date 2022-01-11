@@ -1,6 +1,9 @@
 package com.movieticket.movieTicketBooking.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.List;
@@ -17,6 +20,7 @@ public class user {
     public String name;
     @Column(name = "mobile")
     public BigInteger mobile;
+
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "userBooked",cascade = CascadeType.ALL)
     public List<Booking> bookings;

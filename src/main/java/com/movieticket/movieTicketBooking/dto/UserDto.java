@@ -1,5 +1,7 @@
 package com.movieticket.movieTicketBooking.dto;
 
+import com.movieticket.movieTicketBooking.entity.Booking;
+
 import java.math.BigInteger;
 import java.util.List;
 
@@ -8,7 +10,6 @@ public class UserDto {
     private int userId;
     private String userName;
     private BigInteger userMobile;
-
 
 
     public int getUserId() {
