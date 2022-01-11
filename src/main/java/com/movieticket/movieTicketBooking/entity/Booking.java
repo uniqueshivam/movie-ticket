@@ -2,6 +2,7 @@ package com.movieticket.movieTicketBooking.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.apache.catalina.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,18 +35,32 @@ public class Booking {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "booking",cascade = CascadeType.ALL)
     private List<Seat> listOfSeats;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    private user userBooked;
+
     public Booking()
     {
 
     }
 
-    public Booking(int booking_id, Audi audi, Movie movie, Date bookingTime, double totalAmount, List<Seat> listOfSeats) {
+
+    public Booking(int booking_id, Audi audi, Movie movie, Date bookingTime, double totalAmount, List<Seat> listOfSeats, user userBooked) {
         this.booking_id = booking_id;
         this.audi = audi;
         this.movie = movie;
         this.bookingTime = bookingTime;
         this.totalAmount = totalAmount;
         this.listOfSeats = listOfSeats;
+        this.userBooked = userBooked;
+    }
+
+    public user getUserBooked() {
+        return userBooked;
+    }
+
+    public void setUserBooked(user userBooked) {
+        this.userBooked = userBooked;
     }
 
     public int getBooking_id() {

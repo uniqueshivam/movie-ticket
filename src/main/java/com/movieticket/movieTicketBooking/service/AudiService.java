@@ -22,4 +22,15 @@ public class AudiService {
 
         audiRepo.save(newAudi);
     }
+
+    public Audi getAudiById(int id)
+    {
+        return audiRepo.findById(id).get();
+    }
+
+    public int deleteAudiById(int id)
+    {
+        audiRepo.deleteById(id);
+        return id;
+    }
 }

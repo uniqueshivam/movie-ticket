@@ -3,7 +3,7 @@ package com.movieticket.movieTicketBooking.dto;
 public class SeatDto {
 
     private int id;
-    private AudiDto audiDto;
+    private int audiId;
     private int isBooked;
     private int price;
 
@@ -16,12 +16,12 @@ public class SeatDto {
         this.id = id;
     }
 
-    public AudiDto getAudiDto() {
-        return audiDto;
+    public int getAudiId() {
+        return audiId;
     }
 
-    public void setAudiDto(AudiDto audiDto) {
-        this.audiDto = audiDto;
+    public void setAudiId(int audiId) {
+        this.audiId = audiId;
     }
 
     public int getIsBooked() {

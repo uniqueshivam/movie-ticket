@@ -3,6 +3,7 @@ package com.movieticket.movieTicketBooking.entity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -17,16 +18,27 @@ public class user {
     @Column(name = "mobile")
     public BigInteger mobile;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "userBooked",cascade = CascadeType.ALL)
+    public List<Booking> bookings;
 
     public user()
     {
 
     }
 
-    public user(int id, String name, BigInteger mobile) {
+    public user(int id, String name, BigInteger mobile, List<Booking> bookings) {
         this.id = id;
         this.name = name;
         this.mobile = mobile;
+        this.bookings = bookings;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public int getId() {

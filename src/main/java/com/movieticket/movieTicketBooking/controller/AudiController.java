@@ -31,4 +31,16 @@ public class AudiController {
     {
         audiService.addAudi(audi);
     }
+
+    @GetMapping("/getAudi/{id}")
+    public AudiDto getAudiById(@PathVariable int id)
+    {
+        return audiConverter.audiEntityToDto( audiService.getAudiById(id));
+    }
+
+    @DeleteMapping("/deleteAudi/{id}")
+    public int deleteAudi(@PathVariable int id)
+    {
+        return audiService.deleteAudiById(id);
+    }
 }

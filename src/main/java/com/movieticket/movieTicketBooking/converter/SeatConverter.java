@@ -20,7 +20,7 @@ public class SeatConverter {
         dto.setId(seat.getId());
         dto.setIsBooked(seat.getIsbooked());
         dto.setPrice(seat.getPrice());
-        dto.setAudiDto(audiConverter.audiEntityToDto(seat.getAudi()));
+        dto.setAudiId(seat.getAudi().getId());
         return dto;
 
     }
@@ -30,8 +30,4 @@ public class SeatConverter {
         return	seats.stream().map(x -> seatEntityToDto(x)).collect(Collectors.toList());
     }
 
-//    public Seat seatDtoToEntity(SeatDto seatDto)
-//    {
-//
-//    }
 }

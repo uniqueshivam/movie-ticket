@@ -1,5 +1,7 @@
 package com.movieticket.movieTicketBooking.dto;
 
+import com.movieticket.movieTicketBooking.entity.user;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,15 @@ public class BookingDto {
     private Date bookingTime;
 
     private List<SeatDto> seats;
+    private UserDto userBooked;
 
+    public UserDto getUserBooked() {
+        return userBooked;
+    }
+
+    public void setUserBooked(UserDto userBooked) {
+        this.userBooked = userBooked;
+    }
 
     public int getBookingId() {
         return bookingId;

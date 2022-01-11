@@ -16,6 +16,8 @@ public class BookingConverter {
 
     @Autowired
     private SeatConverter seatConverter;
+    @Autowired
+    private UserConverter userConverter;
 
     public BookingDto bookingEntityToDto(Booking booking)
     {
@@ -24,6 +26,7 @@ public class BookingConverter {
         bookingDto.setAudiName(booking.getAudi().getName());
         bookingDto.setMovieName(booking.getMovie().getName());
         bookingDto.setBookingTime(booking.getBookingTime());
+        bookingDto.setUserBooked(userConverter.userEntityToDto(booking.getUserBooked()));
         bookingDto.setSeats(seatConverter.listOfSeatEntityToListDto(booking.getListOfSeats()));
 
         return bookingDto;

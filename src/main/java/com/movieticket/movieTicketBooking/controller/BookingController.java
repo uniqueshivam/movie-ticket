@@ -31,4 +31,16 @@ public class BookingController {
         return bookingConverter.listOfBookingEntityToListDto(bookingservice.getAllBooking());
     }
 
+    @GetMapping("/getBooking/{id}")
+    public BookingDto getBookingById(@PathVariable int id)
+    {
+        return bookingConverter.bookingEntityToDto(bookingservice.getBookingById(id));
+    }
+
+    @DeleteMapping("/deleteBooking/{id}")
+    public int deleteBookingById(@PathVariable int id)
+    {
+        return bookingservice.deleteBookingById(id);
+    }
+
 }

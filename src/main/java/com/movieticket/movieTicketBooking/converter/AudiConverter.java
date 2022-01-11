@@ -30,13 +30,5 @@ public class AudiConverter {
         return	audis.stream().map(x -> audiEntityToDto(x)).collect(Collectors.toList());
     }
 
-//    public Audi audiDtoToEntity(AudiDto audiDto)
-//    {
-//        Audi audi = new Audi();
-//        audi.setId(audiDto.getId());
-//        audi.setName(audiDto.getName());
-//        audi.setTotalSeats(audiDto.getTotalSeats());
-//        audi.setMovie();
-//
-//    }
+
 }

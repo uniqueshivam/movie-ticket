@@ -1,5 +1,7 @@
 package com.movieticket.movieTicketBooking.controller;
 
+import com.movieticket.movieTicketBooking.converter.UserConverter;
+import com.movieticket.movieTicketBooking.dto.UserDto;
 import com.movieticket.movieTicketBooking.entity.user;
 import com.movieticket.movieTicketBooking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class UserController {
 
     @Autowired
     public UserService userService;
+    @Autowired
+    private UserConverter userConverter;
 
     @PostMapping("/newUser")
     public void addNewUser(@RequestBody user newUser)
@@ -23,9 +27,9 @@ public class UserController {
     }
 
     @GetMapping("/allUser")
-    public List<user> getAllUser()
+    public List<UserDto> getAllUser()
     {
         System.out.println("hii");
-        return userService.getAlluser();
+        return userConverter.listOfUserEntityToListDto( userService.getAlluser());
     }
 }

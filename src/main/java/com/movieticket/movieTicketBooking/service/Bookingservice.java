@@ -28,4 +28,15 @@ public class Bookingservice {
 
         return bookingRepo.findAll();
     }
+
+    public Booking getBookingById(int id)
+    {
+        return bookingRepo.findById(id).get();
+    }
+
+    public int deleteBookingById(int id)
+    {
+        bookingRepo.deleteById(id);
+        return id;
+    }
 }
