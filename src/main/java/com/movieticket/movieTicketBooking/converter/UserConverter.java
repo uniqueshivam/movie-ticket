@@ -11,15 +11,12 @@ import java.util.stream.Collectors;
 @Component
 public class UserConverter {
 
-    @Autowired
-    private BookingConverter bookingConverter;
     public UserDto userEntityToDto(user u)
     {
         UserDto userDto= new UserDto();
         userDto.setUserId(u.getId());
         userDto.setUserName(u.getName());
         userDto.setUserMobile(u.getMobile());
-        userDto.setBookings(bookingConverter.listOfBookingEntityToListDto(u.getBookings()));
 
         return userDto;
 
