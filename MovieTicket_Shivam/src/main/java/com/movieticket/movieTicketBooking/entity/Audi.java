@@ -37,12 +37,13 @@ public class Audi {
 
     }
 
-    public Audi(int id, int totalSeats, String name, Movie movie, Theater theater) {
+    public Audi(int id, int totalSeats, String name, Movie movie, Theater theater, List<Seat> seats) {
         this.id = id;
         this.totalSeats = totalSeats;
         this.name = name;
         this.movie = movie;
         this.theater = theater;
+        this.seats = seats;
     }
 
     public int getId() {
@@ -83,6 +84,14 @@ public class Audi {
 
     public void setTheater(Theater theater) {
         this.theater = theater;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     @Override

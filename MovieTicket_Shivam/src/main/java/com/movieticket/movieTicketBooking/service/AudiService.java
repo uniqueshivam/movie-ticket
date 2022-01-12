@@ -43,4 +43,9 @@ public class AudiService {
     {
         return audiRepo.findByTheaterCity(city);
     }
+
+    public Audi getSeatListWithMovieAndTheaterId(int movieId, int audiId)
+    {
+        return audiRepo.findByMovieIdAndId(movieId, audiId);
+    }
 }
