@@ -2,6 +2,7 @@ package com.movieticket.movieTicketBooking.controller;
 
 
 import com.movieticket.movieTicketBooking.dto.AudiDto;
+import com.movieticket.movieTicketBooking.dto.AudiDtoCopy;
 import com.movieticket.movieTicketBooking.entity.Movie;
 import com.movieticket.movieTicketBooking.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class MovieController {
         movieService.saveMovie(movie);
     }
 
-    @GetMapping("/searchWithMovieAndCity/{movieName}/{cityName}")
-    public List<Object> searchWithMovieAndCity(@PathVariable String movieName,@PathVariable  String cityName)
-    {
-        return movieService.searchWithMovieAndCity(movieName,cityName);
-    }
+//    @GetMapping("/searchWithMovieAndCity/{movieName}/{cityName}")
+//    public List<Object> searchWithMovieAndCity(@PathVariable String movieName, @PathVariable  String cityName)
+//    {
+//        return movieService.searchWithMovieAndCity(movieName,cityName);
+//    }
 }

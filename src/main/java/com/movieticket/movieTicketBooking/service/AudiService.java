@@ -33,4 +33,9 @@ public class AudiService {
         audiRepo.deleteById(id);
         return id;
     }
+
+    public List<Audi> findAudiByMovieAndCity(String movieName, String city)
+    {
+        return audiRepo.findByMovieNameAndTheaterCity(movieName,city);
+    }
 }

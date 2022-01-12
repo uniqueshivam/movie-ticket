@@ -43,4 +43,10 @@ public class AudiController {
     {
         return audiService.deleteAudiById(id);
     }
+
+    @GetMapping("/searchWithMovieAndCity/{movieName}/{cityName}")
+    public List<AudiDto> searchWithMovieAndCity(@PathVariable String movieName, @PathVariable  String cityName)
+    {
+        return audiConverter.listOfAudiEntityToListDto(audiService.findAudiByMovieAndCity(movieName,cityName));
+    }
 }

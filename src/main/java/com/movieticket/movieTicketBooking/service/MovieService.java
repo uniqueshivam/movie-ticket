@@ -1,6 +1,7 @@
 package com.movieticket.movieTicketBooking.service;
 
 import com.movieticket.movieTicketBooking.dto.AudiDto;
+import com.movieticket.movieTicketBooking.dto.AudiDtoCopy;
 import com.movieticket.movieTicketBooking.entity.Movie;
 import com.movieticket.movieTicketBooking.repository.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,6 @@ public class MovieService {
     public void saveMovie(Movie newMovie)
     {
         movieRepo.save(newMovie);
-    }
-
-    public List<Object> searchWithMovieAndCity(String movieName, String cityName)
-    {
-
-        return movieRepo.searchWithMovieAndCity(movieName,cityName);
     }
 
 }
