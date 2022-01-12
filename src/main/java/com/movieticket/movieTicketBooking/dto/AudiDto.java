@@ -71,4 +71,16 @@ public class AudiDto {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "AudiDto{" +
+                "id=" + id +
+                ", totalSeats=" + totalSeats +
+                ", name='" + name + '\'' +
+                ", movieName='" + movieName + '\'' +
+                ", theaterName='" + theaterName + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

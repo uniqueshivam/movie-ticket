@@ -24,9 +24,9 @@ public class MovieService {
         movieRepo.save(newMovie);
     }
 
-    public List<AudiDto> searchWithMovieAndCity(String movieName, String cityName)
+    public List<Object> searchWithMovieAndCity(String movieName, String cityName)
     {
-        System.out.println(movieRepo.searchWithMovieAndCity(movieName,cityName));
+
         return movieRepo.searchWithMovieAndCity(movieName,cityName);
     }
 

@@ -29,7 +29,7 @@ public class MovieController {
     }
 
     @GetMapping("/searchWithMovieAndCity/{movieName}/{cityName}")
-    public List<AudiDto> searchWithMovieAndCity(@PathVariable String movieName,@PathVariable  String cityName)
+    public List<Object> searchWithMovieAndCity(@PathVariable String movieName,@PathVariable  String cityName)
     {
         return movieService.searchWithMovieAndCity(movieName,cityName);
     }
