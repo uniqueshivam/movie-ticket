@@ -38,4 +38,9 @@ public class AudiService {
     {
         return audiRepo.findByMovieNameAndTheaterCity(movieName,city);
     }
+
+    public List<Audi> findAudiByCityOnly(String city)
+    {
+        return audiRepo.findByTheaterCity(city);
+    }
 }

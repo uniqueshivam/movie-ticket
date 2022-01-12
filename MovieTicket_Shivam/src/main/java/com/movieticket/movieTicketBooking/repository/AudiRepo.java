@@ -14,4 +14,5 @@ public interface AudiRepo extends JpaRepository<Audi,Integer> {
 
 //    @Query("From Audi where movie.name = :movieName and theater.city = :city")
     public List<Audi> findByMovieNameAndTheaterCity (String movieName, String city);
+    public List<Audi> findByTheaterCity(String city);
 }
