@@ -43,8 +43,8 @@ public class MovieController {
         movieService.saveMovie(movie);
     }
 
-    @GetMapping("/searchWithMovieAndCity/{movieName}/{cityName}")
-    public List<SearchWithMovieAndCityDto> searchWithMovieAndCity(@PathVariable String movieName, @PathVariable  String cityName)
+    @PostMapping("/searchWithMovieAndCity")
+    public List<SearchWithMovieAndCityDto> searchWithMovieAndCity(@RequestParam String movieName, @RequestParam  String cityName)
     {
         return searchWithMovieAndCityConverter.convertListOfAudiEntityToDto(audiService.findAudiByMovieAndCity(movieName,cityName));
     }
