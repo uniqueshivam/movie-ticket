@@ -20,7 +20,7 @@ public class Seat {
     public Audi audi;
 
     @Column(name = "isbooked")
-    public int isbooked;
+    public int isBooked;
 
     @Column(name = "price")
     public int price;
@@ -39,7 +39,7 @@ public class Seat {
     public Seat(int id, Audi audi, int isbooked, int price, Booking booking) {
         this.id = id;
         this.audi = audi;
-        this.isbooked = isbooked;
+        this.isBooked = isbooked;
         this.price = price;
         this.booking = booking;
     }
@@ -61,11 +61,11 @@ public class Seat {
     }
 
     public int getIsbooked() {
-        return isbooked;
+        return isBooked;
     }
 
     public void setIsbooked(int isbooked) {
-        this.isbooked = isbooked;
+        this.isBooked = isbooked;
     }
 
     public int getPrice() {

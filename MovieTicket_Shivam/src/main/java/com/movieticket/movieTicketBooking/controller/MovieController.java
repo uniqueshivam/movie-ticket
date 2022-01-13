@@ -54,9 +54,5 @@ public class MovieController {
     {
         return searchWithMovieAndCityConverter.convertListOfAudiEntityToDto((audiService.findAudiByCityOnly(cityName)));
     }
-    @GetMapping("/getSeatsWithMovieAndTheaterId/{movieId}/{audiId}")
-    public List<SeatDto> getSeatListWithMovieAndTheaterId(@PathVariable int movieId, int audiId)
-    {
-        return seatConverter.listOfSeatEntityToListDto(audiService.getSeatListWithMovieAndTheaterId(movieId,audiId).getSeats());
-    }
+
 }

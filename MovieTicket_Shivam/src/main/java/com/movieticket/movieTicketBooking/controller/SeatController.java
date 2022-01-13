@@ -28,9 +28,12 @@ public class SeatController {
     @PostMapping("/addNewSeat")
     public void addNew(@RequestBody Seat seat)
     {
-        System.out.println("########################################################");
-        System.out.println(seat);
-
         seatService.saveSeat(seat);
+    }
+
+    @PostMapping("/getSeatsWithMovieAndTheaterId")
+    public List<SeatDto> getSeatListWithMovieAndTheaterId(@RequestParam int movieId, @RequestParam int audiId, @RequestParam int notBooked)
+    {
+        return seatConverter.listOfSeatEntityToListDto(seatService.getSeatListWithMovieAndTheaterId(movieId,audiId,notBooked));
     }
 }
