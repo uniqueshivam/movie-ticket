@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,9 @@ public class Bookingservice {
     private BookingRepo bookingRepo;
 
 
-    public void newBooking(Booking booking)
+    public Booking newBooking(Booking booking)
     {
-        bookingRepo.save(booking);
+        return  bookingRepo.saveAndFlush(booking);
     }
 
     public List<Booking> getAllBooking()

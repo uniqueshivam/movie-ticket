@@ -84,5 +84,14 @@ public class Seat {
         this.booking = booking;
     }
 
-
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "id=" + id +
+                ", audi=" + audi +
+                ", isBooked=" + isBooked +
+                ", price=" + price +
+                ", booking=" + booking +
+                '}';
+    }
 }

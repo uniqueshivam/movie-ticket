@@ -31,7 +31,7 @@ public class SeatController {
         seatService.saveSeat(seat);
     }
 
-    @PostMapping("/getSeatsWithMovieAndTheaterId")
+    @PostMapping("/getSeatsWithMovieAndAudiId")
     public List<SeatDto> getSeatListWithMovieAndTheaterId(@RequestParam int movieId, @RequestParam int audiId, @RequestParam int notBooked)
     {
         return seatConverter.listOfSeatEntityToListDto(seatService.getSeatListWithMovieAndTheaterId(movieId,audiId,notBooked));

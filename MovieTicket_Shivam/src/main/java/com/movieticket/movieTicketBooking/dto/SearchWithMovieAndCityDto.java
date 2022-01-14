@@ -8,6 +8,7 @@ public class SearchWithMovieAndCityDto {
     private String city;
     private int totalSeatAvailable;
     private String movieName;
+    private int movieId;
 
     public int getAudiId() {
         return audiId;
@@ -56,5 +57,13 @@ public class SearchWithMovieAndCityDto {
 
     public void setMovieName(String movieName) {
         this.movieName = movieName;
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
     }
 }

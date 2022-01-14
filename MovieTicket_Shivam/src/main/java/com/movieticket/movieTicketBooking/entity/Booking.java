@@ -110,4 +110,17 @@ public class Booking {
     public void setListOfSeats(List<Seat> listOfSeats) {
         this.listOfSeats = listOfSeats;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "booking_id=" + booking_id +
+                ", audi=" + audi +
+                ", movie=" + movie +
+                ", bookingTime=" + bookingTime +
+                ", totalAmount=" + totalAmount +
+                ", listOfSeats=" + listOfSeats +
+                ", userBooked=" + userBooked +
+                '}';
+    }
 }

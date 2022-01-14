@@ -24,6 +24,7 @@ public class SearchWithMovieAndCityConverter {
         dto.setTheaterName(audi.getTheater().getName());
         dto.setTotalSeatAvailable(audi.getTotalSeats());
         dto.setMovieName(audi.getMovie().getName());
+        dto.setMovieId(audi.getMovie().getId());
         dto.setCity(audi.getTheater().getCity());
         return dto;
     }
