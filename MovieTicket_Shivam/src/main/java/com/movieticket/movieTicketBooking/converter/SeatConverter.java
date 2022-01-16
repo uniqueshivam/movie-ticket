@@ -20,7 +20,7 @@ public class SeatConverter {
     {
         SeatDto dto = new SeatDto();
         dto.setId(seat.getId());
-        dto.setIsBooked(seat.getIsbooked());
+        dto.setIsBooked(seat.getIsBooked());
         dto.setPrice(seat.getPrice());
         dto.setAudiId(seat.getAudi().getId());
         return dto;
@@ -40,7 +40,7 @@ public class SeatConverter {
         Audi tempAudi = new Audi();
         tempAudi.setId(seatDto.getId());
         seat.setAudi(tempAudi);
-        seat.setIsbooked(1);
+        seat.setIsBooked(1);
 
         return seat;
     }

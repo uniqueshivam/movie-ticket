@@ -10,15 +10,23 @@ import java.util.List;
 
 public interface SeatRepo extends JpaRepository<Seat,Integer> {
 
-    public List<Seat> findByAudiIdAndAudiMovieIdAndIsBooked(int audiId,int movieId,int notBooked);
+    public List<Seat> findByAudiIdAndAudiMovieIdAndIsBookedAndIsReserved(int audiId,int movieId,int notBooked,int isReserved);
 
 
     @Modifying
-    @Query("update Seat set booking.id = :bookingId ,isBooked = :isBooked where id in :seatIds")
+    @Query("update Seat set booking.id = :bookingId ,isBooked = :isBooked, version = (version+1) where id in :seatIds")
     public void updateMultipleSeatsWithBookingId(int bookingId, List<Integer> seatIds,int isBooked);
 
-    @Lock(LockModeType.PESSIMISTIC_READ)
-//    @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "300")})
+    //These contents are for implementing pessimistic locking
+//    @Transactional
+//    @Lock(LockModeType.PESSIMISTIC_WRITE)
+//    @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "30000")})
+
     @Query("from Seat where  id in :seatIds")
     public List<Seat> forLockingTheSeats(List<Integer> seatIds);
+
+    @Modifying
+    @Query("update Seat set isReserved = :reserveToggle where id in :seatIds")
+    public void reserveToggleSeat( List<Integer> seatIds, int reserveToggle);
+
 }

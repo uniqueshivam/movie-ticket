@@ -3,11 +3,14 @@ package com.movieticket.movieTicketBooking.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "seat")
+@DynamicUpdate
 public class Seat {
 
     @Id
@@ -25,6 +28,16 @@ public class Seat {
     @Column(name = "price")
     public int price;
 
+    @Version
+    @Column(name = "version")
+    @Value("${some.key:0}")
+    public int version=0;
+
+    @Column(name = "is_reserved")
+    @Value("${some.key:0}")
+    public int isReserved=0;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name ="booking_id")
@@ -36,11 +49,13 @@ public class Seat {
 
     }
 
-    public Seat(int id, Audi audi, int isbooked, int price, Booking booking) {
+    public Seat(int id, Audi audi, int isBooked, int price, int version, int isReserved, Booking booking) {
         this.id = id;
         this.audi = audi;
-        this.isBooked = isbooked;
+        this.isBooked = isBooked;
         this.price = price;
+        this.version = version;
+        this.isReserved = isReserved;
         this.booking = booking;
     }
 
@@ -60,12 +75,12 @@ public class Seat {
         this.audi = audi;
     }
 
-    public int getIsbooked() {
+    public int getIsBooked() {
         return isBooked;
     }
 
-    public void setIsbooked(int isbooked) {
-        this.isBooked = isbooked;
+    public void setIsBooked(int isBooked) {
+        this.isBooked = isBooked;
     }
 
     public int getPrice() {
@@ -74,6 +89,22 @@ public class Seat {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public int isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(int reserved) {
+        isReserved = reserved;
     }
 
     public Booking getBooking() {
