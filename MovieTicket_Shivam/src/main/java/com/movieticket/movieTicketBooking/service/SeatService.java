@@ -36,15 +36,25 @@ public class SeatService {
 
 
     @Transactional
-    public List<Seat> forLockingTheSeats(List<Integer> seatIds)
+    public List<Seat> getListOfSeatsToBeBooked(List<Integer> seatIds)
     {
 
-        return seatRepo.forLockingTheSeats(seatIds);
+        return seatRepo.getListOfSeatsToBeBooked(seatIds);
     }
 
     @Transactional
     public void reserveToggleSeat(List<Integer> seatIds, int reserveToggle){
         seatRepo.reserveToggleSeat(seatIds,reserveToggle);
+    }
+
+    @Transactional
+    public void removeReservedByUserAfterBooking(List<Seat> seatsBooked)
+    {
+        for(Seat seat:seatsBooked)
+        {
+            seat.setReservedByUser(null);
+            seatRepo.save(seat);
+        }
     }
 
 

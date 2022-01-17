@@ -1,6 +1,8 @@
-package com.movieticket.movieTicketBooking.converter;
+package com.movieticket.movieTicketBooking.controller;
 
 
+import com.movieticket.movieTicketBooking.converter.UserConverter;
+import com.movieticket.movieTicketBooking.dto.UserDto;
 import com.movieticket.movieTicketBooking.entity.Seat;
 import com.movieticket.movieTicketBooking.model.BookingMovie;
 import com.movieticket.movieTicketBooking.service.SeatService;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -18,17 +21,18 @@ import java.util.List;
 public class ReserveSeat {
 
     @Autowired public SeatService seatService;
+    @Autowired public UserConverter userConverter;
 
     @PostMapping("/reserve")
     public boolean reserveSeat(@RequestBody BookingMovie bookingMovieJson)
     {
 
         try{
-            List<Seat> seatsToBeBooked = seatService.forLockingTheSeats(bookingMovieJson.getLisOfSeatIdToBeBooked());
+            List<Seat> seatsToBeBooked = seatService.getListOfSeatsToBeBooked(bookingMovieJson.getLisOfSeatIdToBeBooked());
             for(Seat seat : seatsToBeBooked)
             {
                 seat.setIsReserved(1);
-                seat.setReservedByUserId(bookingMovieJson.getUserId());
+                seat.setReservedByUser(userConverter.userDtoToEntity(bookingMovieJson.getBookedOrReservedByUser()));
                 seatService.saveSeat(seat);
             }
         }
@@ -39,8 +43,8 @@ public class ReserveSeat {
         }
 
 
-//        List<Seat> seatsToBeBooked = seatService.forLockingTheSeats(bookingMovieJson.getLisOfSeatIdToBeBooked());
-//        //Testing locking using thread
+        //        //Testing locking using thread
+//        List<Seat> seatsToBeBooked = seatService.getListOfSeatsToBeBooked(bookingMovieJson.getLisOfSeatIdToBeBooked());
 //            Runnable t = new Runnable() {
 //                @Override
 //                public void run() {
@@ -52,10 +56,16 @@ public class ReserveSeat {
 //
 //                    }
 //                    try{
+//                        UserDto temp = new UserDto();
+//                        temp.setUserId(1);
+//                        temp.setUserName("shivam");
+//                        temp.setUserMobile(BigInteger.valueOf(8622035));
+//
 //                        for(Seat currentSeat:seatsToBeBooked)
 //                        {
 //                            Seat tempSeat = currentSeat;
-//                            tempSeat.setReserved(1);
+//                            tempSeat.setIsReserved(1);
+//                            tempSeat.setReservedByUser(userConverter.userDtoToEntity(temp));
 //                            seatService.saveSeat(tempSeat);
 //                        }
 //                    }
@@ -74,7 +84,8 @@ public class ReserveSeat {
 //                    for(Seat currentSeat:seatsToBeBooked)
 //                    {
 //                        Seat tempSeat = currentSeat;
-//                        tempSeat.setReserved(1);
+//                        tempSeat.setIsReserved(1);
+//                        tempSeat.setReservedByUser(userConverter.userDtoToEntity(bookingMovieJson.getBookedOrReservedByUser()));
 //                        seatService.saveSeat(tempSeat);
 //                    }
 //

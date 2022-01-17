@@ -1,6 +1,8 @@
 package com.movieticket.movieTicketBooking.model;
 
 import com.movieticket.movieTicketBooking.dto.SeatDto;
+import com.movieticket.movieTicketBooking.dto.UserDto;
+import com.movieticket.movieTicketBooking.entity.user;
 
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class BookingMovie {
     private List<Integer> lisOfSeatIdToBeBooked;
     private int audiId;
     private int movieId;
-    private int userId;
+    private UserDto bookedOrReservedByUser;
 
     public List<Integer> getLisOfSeatIdToBeBooked() {
         return lisOfSeatIdToBeBooked;
@@ -35,12 +37,12 @@ public class BookingMovie {
         this.movieId = movieId;
     }
 
-    public int getUserId() {
-        return userId;
+    public UserDto getBookedOrReservedByUser() {
+        return bookedOrReservedByUser;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBookedOrReservedByUser(UserDto bookedOrReservedByUser) {
+        this.bookedOrReservedByUser = bookedOrReservedByUser;
     }
 }
 

@@ -37,12 +37,13 @@ public class Seat {
     @Value("${some.key:0}")
     public Integer isReserved=0;
 
-    @Column(name = "reserved_by_user_id")
-    private Integer reservedByUserId;
+    @ManyToOne(fetch = FetchType.LAZY,optional = true)
+    @JoinColumn(name = "reserved_by_user_id",referencedColumnName = "id")
+    private user reservedByUser;
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name ="booking_id")
     public Booking booking;
 
@@ -52,14 +53,14 @@ public class Seat {
 
     }
 
-    public Seat(Integer id, Audi audi, Integer isBooked, Integer price, Integer version, Integer isReserved, Integer reservedByUserId, Booking booking) {
+    public Seat(Integer id, Audi audi, Integer isBooked, Integer price, Integer version, Integer isReserved, user reservedByUser, Booking booking) {
         this.id = id;
         this.audi = audi;
         this.isBooked = isBooked;
         this.price = price;
         this.version = version;
         this.isReserved = isReserved;
-        this.reservedByUserId = reservedByUserId;
+        this.reservedByUser = reservedByUser;
         this.booking = booking;
     }
 
@@ -111,12 +112,12 @@ public class Seat {
         this.isReserved = isReserved;
     }
 
-    public Integer getReservedByUserId() {
-        return reservedByUserId;
+    public user getReservedByUser() {
+        return reservedByUser;
     }
 
-    public void setReservedByUserId(Integer reservedByUserId) {
-        this.reservedByUserId = reservedByUserId;
+    public void setReservedByUser(user reservedByUser) {
+        this.reservedByUser = reservedByUser;
     }
 
     public Booking getBooking() {

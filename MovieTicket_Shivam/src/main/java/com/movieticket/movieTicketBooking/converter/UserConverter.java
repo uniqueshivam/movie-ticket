@@ -28,6 +28,15 @@ public class UserConverter {
         return	listOfuser.stream().map(x -> userEntityToDto(x)).collect(Collectors.toList());
     }
 
+    public user userDtoToEntity(UserDto userDto)
+    {
+        user tempUser = new user();
+        tempUser.setId(userDto.getUserId());
+        tempUser.setName(userDto.getUserName());
+        tempUser.setMobile(userDto.getUserMobile());
+        return tempUser;
+    }
+
 
 
 }

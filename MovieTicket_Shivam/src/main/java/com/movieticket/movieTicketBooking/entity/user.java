@@ -25,16 +25,20 @@ public class user {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "userBooked",cascade = CascadeType.ALL)
     public List<Booking> bookings;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "reservedByUser")
+    private List<Seat> reservedSeatIds;
+
     public user()
     {
 
     }
 
-    public user(Integer id, String name, BigInteger mobile, List<Booking> bookings) {
+    public user(Integer id, String name, BigInteger mobile, List<Booking> bookings, List<Seat> reservedSeatIds) {
         this.id = id;
         this.name = name;
         this.mobile = mobile;
         this.bookings = bookings;
+        this.reservedSeatIds = reservedSeatIds;
     }
 
     public Integer getId() {
@@ -67,5 +71,13 @@ public class user {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public List<Seat> getReservedSeatIds() {
+        return reservedSeatIds;
+    }
+
+    public void setReservedSeatIds(List<Seat> reservedSeatIds) {
+        this.reservedSeatIds = reservedSeatIds;
     }
 }

@@ -23,7 +23,7 @@ public interface SeatRepo extends JpaRepository<Seat,Integer> {
 //    @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "30000")})
 
     @Query("from Seat where  id in :seatIds")
-    public List<Seat> forLockingTheSeats(List<Integer> seatIds);
+    public List<Seat> getListOfSeatsToBeBooked(List<Integer> seatIds);
 
     @Modifying
     @Query("update Seat set isReserved = :reserveToggle where id in :seatIds")

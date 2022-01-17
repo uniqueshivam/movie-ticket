@@ -2,6 +2,7 @@ package com.movieticket.movieTicketBooking.controller;
 
 import com.movieticket.movieTicketBooking.converter.BookingConverter;
 import com.movieticket.movieTicketBooking.converter.SeatConverter;
+import com.movieticket.movieTicketBooking.converter.UserConverter;
 import com.movieticket.movieTicketBooking.dto.BookingDto;
 import com.movieticket.movieTicketBooking.entity.*;
 import com.movieticket.movieTicketBooking.model.BookingMovie;
@@ -25,6 +26,8 @@ public class BookingController {
     private BookingConverter bookingConverter;
     @Autowired
     private SeatService seatService;
+    @Autowired
+    private UserConverter userConverter;
 
     @PostMapping("/addNew")
     public int addNewBooking(@RequestBody Booking booking) {
@@ -49,48 +52,47 @@ public class BookingController {
 
     @PostMapping("/bookSeats")
     public int bookSeats(@RequestBody BookingMovie bookingMovieJson) {
+
         Movie movieToBeBooked = new Movie();
         movieToBeBooked.setId(bookingMovieJson.getMovieId());
 
         Audi audiToBeBooked = new Audi();
         audiToBeBooked.setId(bookingMovieJson.getAudiId());
 
-        user userBooking = new user();
-        userBooking.setId(1);
-
         Booking newBooking = new Booking();
 
         newBooking.setAudi(audiToBeBooked);
-        newBooking.setTotalAmount(5000);
-        newBooking.setUserBooked(userBooking);
+        //Not calculating the amount as of now, making it hard coded
+        newBooking.setTotalAmount(5000.0);
+        newBooking.setUserBooked(userConverter.userDtoToEntity(bookingMovieJson.getBookedOrReservedByUser()));
         newBooking.setMovie(movieToBeBooked);
 
-        int bookingId = -1;
 
-        //reserving the seats for the booking
+        Booking bookedBooking = bookingservice.newBooking(newBooking);
         try {
-            Booking bookedBooking = bookingservice.newBooking(newBooking);
-            bookingId = bookedBooking.getBooking_id();
-            seatService.reserveToggleSeat(bookingMovieJson.getLisOfSeatIdToBeBooked(), 1);
-
             //getting the seats which need to be booked for using the version part of the optimistic locking
-            List<Seat> seatsToBeBooked = seatService.forLockingTheSeats(bookingMovieJson.getLisOfSeatIdToBeBooked());
+
+            List<Seat> seatsToBeBooked = seatService.getListOfSeatsToBeBooked(bookingMovieJson.getLisOfSeatIdToBeBooked());
 
 
             try {
                 for (Seat currentSeat : seatsToBeBooked) {
+                    if (currentSeat.getReservedByUser().getId() != bookingMovieJson.getBookedOrReservedByUser().getUserId()) {
+                        throw new Exception("User not authorized to book the seats reserved by other user");
+                    }
                     Seat tempSeat = currentSeat;
                     tempSeat.setIsBooked(1);
                     tempSeat.setBooking(newBooking);
                     seatService.saveSeat(tempSeat);
                 }
+                bookedBooking.setListOfSeats(seatsToBeBooked);
+                seatService.removeReservedByUserAfterBooking(seatsToBeBooked);
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                //deleting the booking Id generated
+                //deleting the booking id generated because booking wasn't successful
                 bookingservice.deleteBookingById(bookedBooking.getBooking_id());
             }
-
-
 
 
         } catch (Exception e) {
@@ -101,7 +103,7 @@ public class BookingController {
         }
 
 
-        return bookingId;
+        return bookedBooking.getBooking_id();
     }
 
 }
