@@ -14,7 +14,7 @@ public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int id;
+    public Integer id;
     @Column(name = "name")
     public String name;
     @Column(name = "city")
@@ -28,17 +28,18 @@ public class Theater {
 
     }
 
-    public Theater(int id, String name, String city) {
+    public Theater(Integer id, String name, String city, List<Audi> listOfAudi) {
         this.id = id;
         this.name = name;
         this.city = city;
+        this.listOfAudi = listOfAudi;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,5 +57,13 @@ public class Theater {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<Audi> getListOfAudi() {
+        return listOfAudi;
+    }
+
+    public void setListOfAudi(List<Audi> listOfAudi) {
+        this.listOfAudi = listOfAudi;
     }
 }

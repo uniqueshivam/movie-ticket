@@ -16,7 +16,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "booking_id")
-    private int booking_id;
+    private Integer booking_id;
 
     @ManyToOne
     @JoinColumn(name = "audi_id",referencedColumnName = "id")
@@ -30,7 +30,7 @@ public class Booking {
     private Date bookingTime;
 
     @Column(name = "total_amount")
-    private double totalAmount;
+    private Double totalAmount;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "booking",cascade = CascadeType.ALL)
     private List<Seat> listOfSeats;
@@ -45,7 +45,7 @@ public class Booking {
     }
 
 
-    public Booking(int booking_id, Audi audi, Movie movie, Date bookingTime, double totalAmount, List<Seat> listOfSeats, user userBooked) {
+    public Booking(Integer booking_id, Audi audi, Movie movie, Date bookingTime, Double totalAmount, List<Seat> listOfSeats, user userBooked) {
         this.booking_id = booking_id;
         this.audi = audi;
         this.movie = movie;
@@ -55,19 +55,11 @@ public class Booking {
         this.userBooked = userBooked;
     }
 
-    public user getUserBooked() {
-        return userBooked;
-    }
-
-    public void setUserBooked(user userBooked) {
-        this.userBooked = userBooked;
-    }
-
-    public int getBooking_id() {
+    public Integer getBooking_id() {
         return booking_id;
     }
 
-    public void setBooking_id(int booking_id) {
+    public void setBooking_id(Integer booking_id) {
         this.booking_id = booking_id;
     }
 
@@ -95,11 +87,11 @@ public class Booking {
         this.bookingTime = bookingTime;
     }
 
-    public double getTotalAmount() {
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -109,6 +101,14 @@ public class Booking {
 
     public void setListOfSeats(List<Seat> listOfSeats) {
         this.listOfSeats = listOfSeats;
+    }
+
+    public user getUserBooked() {
+        return userBooked;
+    }
+
+    public void setUserBooked(user userBooked) {
+        this.userBooked = userBooked;
     }
 
     @Override

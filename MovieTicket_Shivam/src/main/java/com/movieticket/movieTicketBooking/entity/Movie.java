@@ -12,7 +12,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name  ="id")
-    public int id;
+    public Integer id;
     @Column(name = "name")
     public String name;
     @Column(name = "director")
@@ -27,17 +27,18 @@ public class Movie {
 
     }
 
-    public Movie(int id, String name, String director) {
+    public Movie(Integer id, String name, String director, List<Audi> listOfAudi) {
         this.id = id;
         this.name = name;
         this.director = director;
+        this.listOfAudi = listOfAudi;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,5 +56,13 @@ public class Movie {
 
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    public List<Audi> getListOfAudi() {
+        return listOfAudi;
+    }
+
+    public void setListOfAudi(List<Audi> listOfAudi) {
+        this.listOfAudi = listOfAudi;
     }
 }

@@ -91,50 +91,7 @@ public class BookingController {
             }
 
 
-            //Testing locking using thread
-//            Runnable t = new Runnable() {
-//                @Override
-//                public void run() {
-//                    try{
-//                        Thread.sleep(5000);
-//                    }
-//                    catch(Exception e)
-//                    {
-//
-//                    }
-//                    try{
-//                        for(Seat currentSeat:seatsToBeBooked)
-//                        {
-//                            Seat tempSeat = currentSeat;
-//                            tempSeat.setBooking(newBooking);
-//                            seatService.saveSeat(tempSeat);
-//                        }
-//                    }
-//                    catch (Exception e)
-//                    {
-//                        System.out.println(e.getMessage());
-////                        bookingservice.deleteBookingById(bookedBooking.getBooking_id());
-//                    }
-//
-//                }
-//            };
-//
-//            Runnable t2 = new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                    for(Seat currentSeat:seatsToBeBooked)
-//                    {
-//                        Seat tempSeat = currentSeat;
-//                        tempSeat.setBooking(newBooking);
-//                        seatService.saveSeat(tempSeat);
-//                    }
-//
-//                }
-//            };
-//
-//            new Thread(t).start();
-//            new Thread(t2).start();
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

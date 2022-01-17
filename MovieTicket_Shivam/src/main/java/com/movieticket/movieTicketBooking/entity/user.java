@@ -15,7 +15,7 @@ public class user {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
-    public int id;
+    public Integer id;
     @Column(name = "name")
     public String name;
     @Column(name = "mobile")
@@ -30,26 +30,18 @@ public class user {
 
     }
 
-    public user(int id, String name, BigInteger mobile, List<Booking> bookings) {
+    public user(Integer id, String name, BigInteger mobile, List<Booking> bookings) {
         this.id = id;
         this.name = name;
         this.mobile = mobile;
         this.bookings = bookings;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,5 +59,13 @@ public class user {
 
     public void setMobile(BigInteger mobile) {
         this.mobile = mobile;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

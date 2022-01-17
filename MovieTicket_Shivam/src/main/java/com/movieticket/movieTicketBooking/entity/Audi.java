@@ -13,9 +13,9 @@ public class Audi {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(name = "id")
-    public int id;
+    public Integer id;
     @Column(name = "totalseats")
-    public int totalSeats;
+    public Integer totalSeats;
     @Column(name = "name")
     public String name;
 
@@ -37,7 +37,7 @@ public class Audi {
 
     }
 
-    public Audi(int id, int totalSeats, String name, Movie movie, Theater theater, List<Seat> seats) {
+    public Audi(Integer id, Integer totalSeats, String name, Movie movie, Theater theater, List<Seat> seats) {
         this.id = id;
         this.totalSeats = totalSeats;
         this.name = name;
@@ -46,19 +46,19 @@ public class Audi {
         this.seats = seats;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getTotalSeats() {
+    public Integer getTotalSeats() {
         return totalSeats;
     }
 
-    public void setTotalSeats(int totalSeats) {
+    public void setTotalSeats(Integer totalSeats) {
         this.totalSeats = totalSeats;
     }
 

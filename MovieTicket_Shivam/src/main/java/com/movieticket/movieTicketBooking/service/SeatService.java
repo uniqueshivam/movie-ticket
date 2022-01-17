@@ -34,12 +34,6 @@ public class SeatService {
         return seatRepo.findByAudiIdAndAudiMovieIdAndIsBookedAndIsReserved(audiId,movieId,notBooked,0);
     }
 
-    @Transactional
-    public boolean updateMultipleSeatsWithBookingId(int bookingId, List<Integer> seatIds)
-    {
-        seatRepo.updateMultipleSeatsWithBookingId(bookingId,seatIds,1);
-        return true;
-    }
 
     @Transactional
     public List<Seat> forLockingTheSeats(List<Integer> seatIds)

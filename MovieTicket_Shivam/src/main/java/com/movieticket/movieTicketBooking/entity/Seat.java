@@ -16,26 +16,29 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seatid")
-    public int id;
+    public Integer id;
 
     @ManyToOne
     @JoinColumn(name = "audiid")
     public Audi audi;
 
     @Column(name = "isbooked")
-    public int isBooked;
+    public Integer isBooked;
 
     @Column(name = "price")
-    public int price;
+    public Integer price;
 
     @Version
     @Column(name = "version")
     @Value("${some.key:0}")
-    public int version=0;
+    public Integer version=0;
 
     @Column(name = "is_reserved")
     @Value("${some.key:0}")
-    public int isReserved=0;
+    public Integer isReserved=0;
+
+    @Column(name = "reserved_by_user_id")
+    private Integer reservedByUserId;
 
 
 
@@ -49,21 +52,22 @@ public class Seat {
 
     }
 
-    public Seat(int id, Audi audi, int isBooked, int price, int version, int isReserved, Booking booking) {
+    public Seat(Integer id, Audi audi, Integer isBooked, Integer price, Integer version, Integer isReserved, Integer reservedByUserId, Booking booking) {
         this.id = id;
         this.audi = audi;
         this.isBooked = isBooked;
         this.price = price;
         this.version = version;
         this.isReserved = isReserved;
+        this.reservedByUserId = reservedByUserId;
         this.booking = booking;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -75,36 +79,44 @@ public class Seat {
         this.audi = audi;
     }
 
-    public int getIsBooked() {
+    public Integer getIsBooked() {
         return isBooked;
     }
 
-    public void setIsBooked(int isBooked) {
+    public void setIsBooked(Integer isBooked) {
         this.isBooked = isBooked;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
-    public int isReserved() {
+    public Integer getIsReserved() {
         return isReserved;
     }
 
-    public void setReserved(int reserved) {
-        isReserved = reserved;
+    public void setIsReserved(Integer isReserved) {
+        this.isReserved = isReserved;
+    }
+
+    public Integer getReservedByUserId() {
+        return reservedByUserId;
+    }
+
+    public void setReservedByUserId(Integer reservedByUserId) {
+        this.reservedByUserId = reservedByUserId;
     }
 
     public Booking getBooking() {
